@@ -44,9 +44,37 @@ class ViewOne extends React.Component {
       heights: [140, 155, 160, 155, 160, 165],
     };
     this.viewRef = React.createRef();
+    guess += '!';
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    guess += '2';
+
+    return {
+      height: state.heights[props.clicksLeft],
+    };
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    guess += '5';
+
+    return this.viewRef.current.offsetHeight;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    guess += '7';
+    if (nextProps.clicksLeft === 0) return false;
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (snapshot && snapshot > this.viewRef.current.offsetHeight) {
+      guess += '1';
+    }
   }
 
   render() {
+    guess += ' ';
     return (
       <div style={{ height: this.state.height }} ref={this.viewRef}>
         View One
@@ -59,7 +87,21 @@ class ViewOne extends React.Component {
   View Two
 ************/
 class ViewTwo extends React.Component {
+  constructor(props) {
+    super(props);
+    guess += '4';
+  }
+
+  componentDidMount() {
+    guess += '9';
+  }
+
+  componentWillUnmount() {
+    guess += '3';
+  }
+
   render() {
+    guess += '8';
     return <div>View Two</div>;
   }
 }
@@ -79,7 +121,19 @@ class ExerciseView extends React.Component {
     guess += '#';
   }
 
+  componentDidMount() {
+    guess += '-';
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    guess += '&';
+    if (nextState.clicksLeft === 1) return false;
+    return true;
+  }
+
   componentDidUpdate(prevProps, prevState, snapshot) {
+    guess += '@';
+
     if (this.state.clicksLeft <= 0) {
       console.log(guess);
       if (code === guess) {
@@ -100,6 +154,8 @@ class ExerciseView extends React.Component {
   };
 
   render() {
+    guess += '$';
+
     return (
       <div className="ExerciseView container">
         <button className="button" onClick={this.handleClick}>
