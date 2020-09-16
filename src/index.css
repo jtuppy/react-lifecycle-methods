@@ -1,0 +1,140 @@
+.BlueView {
+    padding: 20px;
+    background: hsl(217, 71%, 53%);
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.BlueView .buttons {
+    margin-bottom: 0px;;
+}
+
+.BlueView .list-container {
+    overflow-y: auto;
+    border: 1px dashed white;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.BlueView li {
+    padding: 10px;
+    margin: 10px;
+    background: white;
+    color: #222;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.RedGreenView {
+    height: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-variant: small-caps;
+    border-radius: 10px;
+}
+
+.RedGreenView.bg-red {
+    background: hsl(348, 86%, 61%);
+}
+
+.RedGreenView.bg-green {
+    background: hsl(141, 53%, 53%);
+}
+
+h1.error {
+    text-align: center;
+    font-size: 26px;
+    color: #f14668;
+}
+
+.ExerciseView .button {
+    margin: 10px auto;
+    display: block;
+}
+
+.ExerciseView p {
+    margin: 10px ;
+    display: block;
+    text-align: center;
+}
+
+.ExerciseView p.msg {
+    padding: 10px;
+    color: white;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.ExerciseView div {
+    border: 5px solid #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    max-width: 400px;
+    margin: 10px auto;
+}
+
+.TimerView {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.TimerView h1 {
+    font-size: 60px;
+}
+
+.ScrollSpyView {
+    height: 1500px;
+}
+
+.ScrollSpyView .box {
+    margin: 60px auto 0px auto;
+    max-width: 200px;
+    height: 200px;
+    background: #eee;
+}
+
+.ScrollSpyView p {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    padding: 10px;
+    background: #444;
+    color: white;
+    font-weight: 700;
+}
+
+.ApiView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ApiView .loader {
+    height: 30px;
+    width: 30px;
+    margin: 40px;
+}
+
+.ApiView p {
+    margin: 40px;
+    font-size: 20px;
+}
