@@ -8,6 +8,7 @@ class BlueView extends React.PureComponent {
       filter: null, // null, even, or odd
     };
 
+    // memoize example
     // this.filter = memo((list, filter) =>
     //   list.filter(
     //     (num) =>
@@ -22,26 +23,50 @@ class BlueView extends React.PureComponent {
 
   // static getDerivedStateFromProps(props, state) {
   //   printBlue('BlueView: getDerivedStateFromProps');
+  //   // if (props.numList !== state.prevPropsNumList || state.prevFilter !== state.filter) {
+  //   //   return {
+  //   //     prevPropsNumList: props.numList,
+  //   //     prevFilter: state.filter,
+  //   //     filteredList: props.numList.filter(
+  //   //       (num) =>
+  //   //         (state.filter === 'even' && num % 2 === 0) ||
+  //   //         (state.filter === 'odd' && num % 2) ||
+  //   //         state.filter === null
+  //   //     ),
+  //   //   };
+  //   // }
 
   //   return null;
   // }
 
-  // componentDidMount() {
-  //   printBlue('BlueView: componentDidMount');
-  // }
+  componentDidMount() {
+    printBlue('BlueView: componentDidMount');
+    this.listRef.current.scrollTop =
+      this.listRef.current.scrollHeight - this.listRef.current.offsetHeight;
+  }
 
   // getSnapshotBeforeUpdate(prevProps, prevState) {
   //   printBlue('BlueView: getSnapshotBeforeUpdate');
+  //   // if (this.props.numList.length > prevProps.numList.length) {
+  //   //   return this.listRef.current.scrollHeight - this.listRef.current.scrollTop;
+  //   // }
   //   return null;
   // }
 
   // shouldComponentUpdate(nextProps, nextState) {
   //   printBlue('BlueView: shouldComponentUpdate');
+  //   // if (nextProps.numList[nextProps.numList.length - 1] % 2) {
+  //   //   return true;
+  //   // }
+  //   // return false;
   //   return true;
   // }
 
   // componentDidUpdate(prevProps, prevState, snapshot) {
   //   printBlue('BlueView: componentDidUpdate');
+  //   // if (snapshot !== null) {
+  //   //   this.listRef.current.scrollTop = this.listRef.current.scrollHeight - snapshot;
+  //   // }
   // }
 
   // componentWillUnmount() {
@@ -61,6 +86,12 @@ class BlueView extends React.PureComponent {
         (this.state.filter === 'odd' && num % 2) ||
         this.state.filter === null
     );
+
+    // derivedState example
+    // const filteredList = this.state.filteredList;
+
+    // memoize example
+    // const filteredList = this.filter(this.props.numList, this.state.filter);
 
     return (
       <div className="BlueView">
