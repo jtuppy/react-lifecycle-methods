@@ -66,10 +66,10 @@ class RedGreenView extends React.Component {
       <div
         className={`RedGreenView bg-${this.props.color}`}
         ref={this.viewRef}
-        style={{ height: this.state.height }}
+        // style={{ height: this.state.height }}
       >
         <p>{this.props.color}</p>
-        <p>{this.state.changed ? 'CHANGED' : 'NOT CHANGED'}</p>
+        {/* <p>{this.state.changed ? 'CHANGED' : 'NOT CHANGED'}</p> */}
         <p></p>
       </div>
     );
