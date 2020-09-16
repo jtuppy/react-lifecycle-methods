@@ -17,6 +17,13 @@ class RedGreenView extends React.Component {
 
   // static getDerivedStateFromProps(props, state) {
   //   printRed('RedGreenView: getDerivedStateFromProps');
+
+  //   /* Not a recommended approach, used only as an example */
+  //   // return {
+  //   //   changed: props.color !== state.prevColor,
+  //   //   prevColor: props.color,
+  //   //   // height: Math.floor(Math.random() * 200) + 300,
+  //   // };
   // }
 
   // componentDidMount() {
@@ -33,21 +40,36 @@ class RedGreenView extends React.Component {
   //   return true;
   // }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    printRed('RedGreenView: componentDidUpdate');
-  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   printRed('RedGreenView: componentDidUpdate');
 
-  componentWillUnmount() {
-    printRed('RedGreenView: componentWillUnmount');
-  }
+  //   // Trivial example to demonstrate getSnapshotBeforeUpdate
+  //   // const viewHeight = this.viewRef.current.offsetHeight;
+  //   // console.log(snapshot, viewHeight);
+  //   // if (snapshot < viewHeight) {
+  //   //   this.viewRef.current.lastChild.innerText = 'Got Taller';
+  //   // } else if (snapshot > viewHeight) {
+  //   //   this.viewRef.current.lastChild.innerText = 'Got Smaller';
+  //   // } else {
+  //   //   this.viewRef.current.lastChild.innerText = 'Same';
+  //   // }
+  // }
+
+  // componentWillUnmount() {
+  //   printRed('RedGreenView: componentWillUnmount');
+  // }
 
   render() {
     printRed('RedGreenView: render');
 
     return (
-      <div className={`RedGreenView bg-${this.props.color}`} ref={this.viewRef}>
+      <div
+        className={`RedGreenView bg-${this.props.color}`}
+        ref={this.viewRef}
+        style={{ height: this.state.height }}
+      >
         <p>{this.props.color}</p>
-        {/* <p>{this.state.changed ? 'CHANGED' : 'NOT CHANGED'}</p> */}
+        <p>{this.state.changed ? 'CHANGED' : 'NOT CHANGED'}</p>
         <p></p>
       </div>
     );
