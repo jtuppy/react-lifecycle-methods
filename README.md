@@ -17,9 +17,9 @@ npm install
 Start up app:
 ```
 npm start
-
+```
 or
-
+```
 npm run start:hooks
 ```
 
@@ -27,4 +27,4 @@ npm run start:hooks
 
 The app consists of an `App.js` and `/components` folder which contains components made with classes. It also contains a mirror version of the app written with functions instead of classes. This app is found in `AppHooks.js` and `/components-hooks`.
 
-Each app can be started with a different command. `App.js` will be bundled with `npm start` and `AppHooks.js` is started with `npm run start:hooks`. It relies on an env variable `HOOKS_APP` to be truthy in order to bundle `AppHooks.js` instead of `App.js`. You can also just comment/uncomment the appropriate import in `index.js` if you prefer that.
+Each app can be started with a different command. `App.js` will be bundled with `npm start` and `AppHooks.js` is started with `npm run start:hooks`. It relies on an env variable `REACT_APP_HOOKS` to be truthy in order to bundle `AppHooks.js` instead of `App.js`. You can also just comment/uncomment the appropriate import in `index.js` if you prefer that.
