@@ -4,7 +4,8 @@ import { printRed } from '../utils';
 class RedGreenView extends React.Component {
   constructor(props) {
     super(props);
-    printRed('RedGreenView: constructor');
+
+    // printRed('RedGreenView: constructor');
 
     // State only needed for getDerivedStateFromProps
     // this.state = {
@@ -60,7 +61,7 @@ class RedGreenView extends React.Component {
   // }
 
   render() {
-    printRed('RedGreenView: render');
+    // printRed('RedGreenView: render');
 
     return (
       <div

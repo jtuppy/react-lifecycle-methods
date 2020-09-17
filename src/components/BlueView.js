@@ -18,7 +18,7 @@ class BlueView extends React.PureComponent {
 
     this.listRef = React.createRef();
 
-    printBlue('BlueView: constructor');
+    // printBlue('BlueView: constructor');
   }
 
   // static getDerivedStateFromProps(props, state) {
@@ -39,11 +39,11 @@ class BlueView extends React.PureComponent {
   //   return null;
   // }
 
-  componentDidMount() {
-    printBlue('BlueView: componentDidMount');
-    this.listRef.current.scrollTop =
-      this.listRef.current.scrollHeight - this.listRef.current.offsetHeight;
-  }
+  // componentDidMount() {
+  //   printBlue('BlueView: componentDidMount');
+  //   // this.listRef.current.scrollTop =
+  //   //   this.listRef.current.scrollHeight - this.listRef.current.offsetHeight;
+  // }
 
   // getSnapshotBeforeUpdate(prevProps, prevState) {
   //   printBlue('BlueView: getSnapshotBeforeUpdate');
@@ -78,7 +78,7 @@ class BlueView extends React.PureComponent {
   }
 
   render() {
-    printBlue('BlueView: render');
+    // printBlue('BlueView: render');
 
     const filteredList = this.props.numList.filter(
       (num) =>
