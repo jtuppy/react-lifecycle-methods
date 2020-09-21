@@ -73,12 +73,13 @@ class BlueView extends React.PureComponent {
   //   printBlue('BlueView: componentWillUnmount');
   // }
 
-  handleErrorClick() {
-    // throw new Error('List is broken...  :(')
-  }
-
   render() {
     // printBlue('BlueView: render');
+
+    // error boundary example
+    // if (this.props.numList.length > 12) {
+    //   throw new Error('List is broken :(')
+    // }
 
     const filteredList = this.props.numList.filter(
       (num) =>
@@ -104,9 +105,6 @@ class BlueView extends React.PureComponent {
           </button>
           <button className="button" onClick={() => this.setState({ filter: 'odd' })}>
             Odd
-          </button>
-          <button className="button is-danger" onClick={this.handleErrorClick}>
-            Throw Error
           </button>
         </div>
         <div className="list-container" ref={this.listRef}>
