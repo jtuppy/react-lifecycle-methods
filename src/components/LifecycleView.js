@@ -19,39 +19,39 @@ class LifecycleView extends React.Component {
   //   return null;
   // }
 
-  // UNSAFE_componentWillMount() {
-  //   printBlack('LifecycleView: UNSAFE_componentWillMount');
-  // }
+  UNSAFE_componentWillMount() {
+    printBlack('LifecycleView: UNSAFE_componentWillMount');
+  }
 
-  // componentDidMount() {
-  //   printBlack('LifecycleView: componentDidMount');
-  // }
+  componentDidMount() {
+    printBlack('LifecycleView: componentDidMount');
+  }
 
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   printBlack('LifecycleView: UNSAFE_componentWillReceiveProps');
-  // }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    printBlack('LifecycleView: UNSAFE_componentWillReceiveProps');
+  }
 
   // getSnapshotBeforeUpdate(prevProps, prevState) {
   //   printBlack('LifecycleView: getSnapshotBeforeUpdate');
   //   return null;
   // }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   printBlack('LifecycleView: shouldComponentUpdate');
-  //   return true;
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    printBlack('LifecycleView: shouldComponentUpdate');
+    return true;
+  }
 
-  // UNSAFE_componentWillUpdate(nextProps, nextState) {
-  //   printBlack('LifecycleView: UNSAFE_componentWillUpdate');
-  // }
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    printBlack('LifecycleView: UNSAFE_componentWillUpdate');
+  }
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   printBlack('LifecycleView: componentDidUpdate');
-  // }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    printBlack('LifecycleView: componentDidUpdate');
+  }
 
-  // componentWillUnmount() {
-  //   printBlack('LifecycleView: componentWillUnmount');
-  // }
+  componentWillUnmount() {
+    printBlack('LifecycleView: componentWillUnmount');
+  }
 
   handleAddItem = () => {
     console.log('ADD ITEM', new Date());

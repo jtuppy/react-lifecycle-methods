@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import BlueView from './BlueView';
 import RedGreenView from './RedGreenView';
 import { printBlack } from '../utils';
@@ -8,24 +8,25 @@ function LifecycleView(props) {
   // not recommended, but used as an example to show the changed/not changed part of the view
   const [redGreenView, setRedGreenView] = useState({ color: null });
   const [numList, setNumList] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
-  const [mounted, setMounted] = useState(false);
+
+  const didMountRef = useRef(false);
 
   // just calculate any derived state on the fly if needed...
   printBlack('LifecycleView: get derived state from props');
 
   useEffect(() => {
+    if (didMountRef.current) {
+      printBlack('LifecycleView: did update');
+    }
+  });
+
+  useEffect(() => {
     printBlack('LifecycleView: did mount');
-    setMounted(true);
+    didMountRef.current = true;
     return () => {
       printBlack('LifecycleView: will unmount');
     };
   }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      printBlack('LifecycleView: did update');
-    }
-  });
 
   const handleAddItem = () => {
     console.log('ADD ITEM', new Date());
