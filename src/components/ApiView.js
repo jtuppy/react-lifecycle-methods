@@ -8,6 +8,32 @@ class ApiView extends React.Component {
     category: 'animal',
   };
 
+  componentDidMount() {
+    this.cancelSource = axios.CancelToken.source();
+    axios
+      .get(`https://api.chucknorris.io/jokes/random?category=${this.state.category}`, {
+        cancelToken: this.cancelSource.token,
+      })
+      .then((res) => this.setState({ loading: false, msg: res.data.value }))
+      .catch((err) => this.setState({ loading: false, msg: 'Failed to load joke :(' }));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.category !== prevState.category) {
+      this.setState({ loading: true });
+      axios
+        .get(`https://api.chucknorris.io/jokes/random?category=${this.state.category}`, {
+          cancelToken: this.cancelSource.token,
+        })
+        .then((res) => this.setState({ loading: false, msg: res.data.value }))
+        .catch((err) => this.setState({ loading: false, msg: 'Failed to load joke :(' }));
+    }
+  }
+
+  componentWillUnmount() {
+    this.cancelSource.cancel();
+  }
+
   onSelect = (evt) => {
     this.setState({ category: evt.target.value });
   };

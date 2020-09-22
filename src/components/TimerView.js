@@ -14,6 +14,13 @@ class TimerView extends React.Component {
     isTiming: false,
   };
 
+  handleTick = () => {
+    console.log(this.timerId);
+    if (this.state.isTiming) {
+      this.setState((state) => ({ seconds: state.seconds + 1 }));
+    }
+  };
+
   handleReset = () => {
     this.setState({ seconds: 0 });
   };
@@ -21,6 +28,14 @@ class TimerView extends React.Component {
   toggleTiming = () => {
     this.setState((state) => ({ isTiming: !state.isTiming }));
   };
+
+  componentDidMount() {
+    this.timerId = setInterval(this.handleTick, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
 
   render() {
     return (

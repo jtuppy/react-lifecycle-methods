@@ -44,3 +44,4 @@ function EffectsRGView({ color }) {
 }
 
 export default EffectsRGView;
+// export default React.memo(EffectsRGView);

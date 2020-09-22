@@ -44,7 +44,7 @@ function BlueView({ numList }) {
     };
   }, []);
 
-  // another option
+  // another option, different UX
   // const componentJustMounted = useRef(true);
   // useLayoutEffect(() => {
   //   const currListRef = listRef.current;

@@ -29,6 +29,21 @@ function ApiView(props) {
 
   const { category, loading, msg } = state;
 
+  useEffect(() => {
+    dispatch({ type: JOKE_REQUEST });
+    const cancelSource = axios.CancelToken.source();
+    axios
+      .get(`https://api.chucknorris.io/jokes/random?category=${category}`, {
+        cancelToken: cancelSource.token,
+      })
+      .then((res) => dispatch({ type: JOKE_RESPONSE, msg: res.data.value }))
+      .catch((err) => dispatch({ type: JOKE_RESPONSE, msg: 'Failed to load joke :(' }));
+
+    return () => {
+      cancelSource.cancel();
+    };
+  }, [category]);
+
   return (
     <div className="ApiView">
       <div className="select">

@@ -21,6 +21,16 @@ function TimerView(props) {
     setIsTiming(false);
   }
 
+  useEffect(() => {
+    let timerId = null;
+    if (isTiming) {
+      timerId = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    }
+    return () => clearInterval(timerId);
+  }, [isTiming]);
+
   return (
     <div className="TimerView">
       <h1>{formatTime(seconds)}</h1>

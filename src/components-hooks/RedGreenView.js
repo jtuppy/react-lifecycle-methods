@@ -26,7 +26,7 @@ const useHeightSnapshot = (viewRef) => {
 
 function RedGreenView({ color }) {
   const lastColorRef = useRef(null);
-  const viewRef = useRef(null);
+  // const viewRef = useRef(null);
 
   const height = Math.floor(Math.random() * 200) + 300;
 
@@ -35,24 +35,24 @@ function RedGreenView({ color }) {
     changed = false;
   }
 
-  //  useEffect(() => {
-  lastColorRef.current = color;
-  // }, [color]);
+  useEffect(() => {
+    lastColorRef.current = color;
+  }, [color]);
 
-  useHeightSnapshot(viewRef);
+  // useHeightSnapshot(viewRef);
 
   // using ref callback API instead
-  // const prevHeight = useRef(null);
-  // const viewRef = (node) => {
-  //   if (node !== null) {
-  //     const viewHeight = node.offsetHeight;
-  //     if (prevHeight.current !== null) {
-  //       const snapshot = prevHeight.current;
-  //       node.lastChild.innerText = getHeightMessage(snapshot, viewHeight);
-  //     }
-  //     prevHeight.current = viewHeight;
-  //   }
-  // };
+  const prevHeight = useRef(null);
+  const viewRef = (node) => {
+    if (node !== null) {
+      const viewHeight = node.offsetHeight;
+      if (prevHeight.current !== null) {
+        const snapshot = prevHeight.current;
+        node.lastChild.innerText = getHeightMessage(snapshot, viewHeight);
+      }
+      prevHeight.current = viewHeight;
+    }
+  };
 
   // using derived state
   // let msg = '';
