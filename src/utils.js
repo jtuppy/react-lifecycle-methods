@@ -1,4 +1,5 @@
-export const printRed = (text) => console.log(`%c  ${text}`, 'background: #DC143C; color: #90EE90');
+export const printRed = (text) =>
+  console.log(`%c  ${text}`, 'background: #DC143C; color: #FFFAF0; border: 1px solid #90EE90');
 
 export const printBlack = (text) => console.log(`%c  ${text}`, 'background: #222; color: #FFFAF0');
 
