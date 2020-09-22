@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useMemo, useLayoutEffect, useEffect } from 'react';
 import { printBlue } from '../utils';
 
 function EffectsBlueView({ numList }) {
