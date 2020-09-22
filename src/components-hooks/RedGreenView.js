@@ -1,5 +1,14 @@
 import React, { useRef, useEffect, useLayoutEffect } from 'react';
 
+const getHeightMessage = (prevHeight, currentHeight) => {
+  if (prevHeight < currentHeight) {
+    return 'Got Taller';
+  } else if (prevHeight > currentHeight) {
+    return 'Got Smaller';
+  }
+  return 'Same';
+};
+
 const useHeightSnapshot = (viewRef) => {
   const prevHeight = useRef(null);
   const componentJustMounted = useRef(true);
@@ -8,20 +17,14 @@ const useHeightSnapshot = (viewRef) => {
     if (!componentJustMounted.current) {
       const viewHeight = viewRef.current.offsetHeight;
       const snapshot = prevHeight.current;
-      if (snapshot < viewHeight) {
-        viewRef.current.lastChild.innerText = 'Got Taller';
-      } else if (snapshot > viewHeight) {
-        viewRef.current.lastChild.innerText = 'Got Smaller';
-      } else {
-        viewRef.current.lastChild.innerText = 'Same';
-      }
+      viewRef.current.lastChild.innerText = getHeightMessage(snapshot, viewHeight);
     }
     componentJustMounted.current = false;
     prevHeight.current = viewRef.current.offsetHeight;
   });
 };
 
-function RedGreenView({ colorProp: { color } }) {
+function RedGreenView({ color }) {
   const lastColorRef = useRef(null);
   const viewRef = useRef(null);
 
@@ -32,11 +35,32 @@ function RedGreenView({ colorProp: { color } }) {
     changed = false;
   }
 
-  useEffect(() => {
-    lastColorRef.current = color;
-  }, [color]);
+  //  useEffect(() => {
+  lastColorRef.current = color;
+  // }, [color]);
 
   useHeightSnapshot(viewRef);
+
+  // using ref callback API instead
+  // const prevHeight = useRef(null);
+  // const viewRef = (node) => {
+  //   if (node !== null) {
+  //     const viewHeight = node.offsetHeight;
+  //     if (prevHeight.current !== null) {
+  //       const snapshot = prevHeight.current;
+  //       node.lastChild.innerText = getHeightMessage(snapshot, viewHeight);
+  //     }
+  //     prevHeight.current = viewHeight;
+  //   }
+  // };
+
+  // using derived state
+  // let msg = '';
+  // const prevHeightRef = useRef(null);
+  // if (prevHeightRef.current !== null) {
+  //   msg = getHeightMessage(prevHeightRef.current, height);
+  // }
+  // prevHeightRef.current = height;
 
   return (
     <div className={`RedGreenView bg-${color}`} ref={viewRef} style={{ height }}>

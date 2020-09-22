@@ -4,7 +4,7 @@ import RedGreenView from './RedGreenView';
 import { printBlack } from '../utils';
 
 function LifecycleView(props) {
-  // made color an object to force an update on redGreenView even when color doesn't change
+  // made color an object to force a rerender of redGreenView even when color doesn't change
   // not recommended, but used as an example to show the changed/not changed part of the view
   const [redGreenView, setRedGreenView] = useState({ color: null });
   const [numList, setNumList] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -71,7 +71,7 @@ function LifecycleView(props) {
         </div>
         <div className="column">
           {redGreenView.color === 'red' || redGreenView.color === 'green' ? (
-            <RedGreenView colorProp={redGreenView} />
+            <RedGreenView color={redGreenView.color} />
           ) : (
             <div />
           )}
